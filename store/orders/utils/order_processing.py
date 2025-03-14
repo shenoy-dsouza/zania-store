@@ -2,7 +2,7 @@ from django.db import transaction
 from rest_framework.exceptions import ValidationError
 from store.products.models import Product
 from store.orders.models import Order, OrderItem
-
+from store.orders.enums import OrderStatusEnums
 
 def process_order(products):
     """Creates an order, validates stock, deducts inventory, and saves order items."""
@@ -35,11 +35,14 @@ def process_order(products):
             order_items.append(OrderItem(product=product, quantity=quantity))
 
         # Create the Order
-        order = Order.objects.create(total_price=total_price, status="pending")
+        order = Order.objects.create(total_price=total_price, status=OrderStatusEnums.PENDING.value)
 
         # Save Order Items
         for item in order_items:
             item.order = order
             item.save()
+
+        order.status = OrderStatusEnums.COMPLETED.value
+        order.save()
 
     return order

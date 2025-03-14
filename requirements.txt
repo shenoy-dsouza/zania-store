@@ -3,3 +3,5 @@ django-environ==0.4.5
 pytest==7.*
 pytest-env==0.*
 django-filter
+django-environ==0.4.5
+mysqlclient==2.1.*

@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from store.orders.models import Order, OrderItem
 from store.products.models import Product
-
+from store.orders.enums import OrderStatusEnums
 
 class OrderItemSerializer(serializers.ModelSerializer):
     product_id = serializers.CharField()
@@ -26,6 +26,7 @@ class OrderSerializer(serializers.ModelSerializer):
         fields = ["id", "products", "total_price", "status", "created"]
         read_only_fields = ["id", "total_price", "status", "created"]
 
+
     def to_representation(self, instance):
         """Customize the output representation of an order."""
         representation = super().to_representation(instance)
@@ -39,8 +40,11 @@ class OrderSerializer(serializers.ModelSerializer):
                 "name": item.product.name,
                 "price": item.product.price,
                 "quantity": item.quantity,
+                "status": OrderStatusEnums.get_name(
+                    item.order.status).lower(),
             }
             for item in order_items
         ]
+        
 
         return representation
