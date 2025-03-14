@@ -24,8 +24,8 @@ Ensure you have the following installed:
 ### Running the Project
 1. Clone the repository:
    ```sh
-   git clone https://github.com/your-username/ecommerce-api.git
-   cd ecommerce-api
+   git clone https://github.com/shenoy-dsouza/zania-store.git
+   cd zania-store
    ```
 2. Build and run the project using Docker:
    ```sh
