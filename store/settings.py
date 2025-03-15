@@ -37,7 +37,6 @@ ALLOWED_HOSTS = []
 LOCAL_APPS = [
     "store.products.apps.ProductsConfig",
     "store.orders.apps.OrdersConfig",
-
 ]
 INSTALLED_APPS = [
     "django.contrib.admin",
@@ -46,8 +45,8 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "rest_framework"
-] + LOCAL_APPS 
+    "rest_framework",
+] + LOCAL_APPS
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -92,9 +91,7 @@ WSGI_APPLICATION = "store.wsgi.application"
 
 DATABASES = {
     "default": {
-        "ENGINE": env.str(
-            "DATABASE_ENGINE", default="django.db.backends.mysql"
-        ),
+        "ENGINE": env.str("DATABASE_ENGINE", default="django.db.backends.mysql"),
         "NAME": env.str("DATABASE_NAME"),
         "USER": env.str("DATABASE_USER"),
         "PASSWORD": env.str("DATABASE_PASSWORD"),
@@ -155,6 +152,5 @@ REST_FRAMEWORK = {
     # "EXCEPTION_HANDLER": "accounts.exceptions.custom_exception_handler",
     "DEFAULT_PAGINATION_CLASS": "store.pagination.CustomPagination",
     "PAGE_SIZE": 10,
-    "DEFAULT_FILTER_BACKENDS": ["django_filters.rest_framework.DjangoFilterBackend"]
-
+    "DEFAULT_FILTER_BACKENDS": ["django_filters.rest_framework.DjangoFilterBackend"],
 }

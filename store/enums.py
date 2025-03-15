@@ -1,6 +1,7 @@
 from typing import Dict, Any
 from enum import Enum
 
+
 class BaseEnum(Enum):
     @classmethod
     def dict(cls) -> Dict[str, Any]:

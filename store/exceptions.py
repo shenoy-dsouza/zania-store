@@ -1,4 +1,3 @@
-
 from rest_framework import status
 from store import error_codes
 from store.error_codes import ERRORS
@@ -30,5 +29,3 @@ class BaseException(Exception):
 
     def get_http_status_code(self):
         return self.http_status_code
-
-

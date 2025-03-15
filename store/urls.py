@@ -12,14 +12,10 @@ urlpatterns = [
     ),
     path(
         "orders",
-        include(
-            "store.orders.urls", namespace="order"
-        ),
+        include("store.orders.urls", namespace="order"),
     ),
     path(
         "products",
-        include(
-            "store.products.urls", namespace="products"
-        ),
+        include("store.products.urls", namespace="products"),
     ),
 ]

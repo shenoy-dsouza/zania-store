@@ -7,10 +7,11 @@ from store.exceptions import BaseException
 from store import error_codes
 from store.orders.models import Order
 
-class OrderCreateAPIView(generics.ListCreateAPIView):
+
+class OrderListCreateAPIView(generics.ListCreateAPIView):
     serializer_class = OrderSerializer
     queryset = Order.objects.all()
-    
+
     def get(self, request, *args, **kwargs):
         try:
             return super().get(request, *args, **kwargs)
@@ -24,7 +25,6 @@ class OrderCreateAPIView(generics.ListCreateAPIView):
                 },
                 e.get_http_status_code(),
             )
-    
 
     def post(self, request, *args, **kwargs):
         try:
